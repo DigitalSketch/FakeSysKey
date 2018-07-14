@@ -1,0 +1,11 @@
+D:\VS_Projects\Fake_SysK\FakeSysKey\bin\Release\FakeSysKey.exe.config
+D:\VS_Projects\Fake_SysK\FakeSysKey\bin\Release\FakeSysKey.exe
+D:\VS_Projects\Fake_SysK\FakeSysKey\bin\Release\FakeSysKey.pdb
+D:\VS_Projects\Fake_SysK\FakeSysKey\obj\Release\FakeSysKey.frmScammerScan.resources
+D:\VS_Projects\Fake_SysK\FakeSysKey\obj\Release\FakeSysKey.frmStart.resources
+D:\VS_Projects\Fake_SysK\FakeSysKey\obj\Release\FakeSysKey.frmStartupKey.resources
+D:\VS_Projects\Fake_SysK\FakeSysKey\obj\Release\FakeSysKey.Properties.Resources.resources
+D:\VS_Projects\Fake_SysK\FakeSysKey\obj\Release\FakeSysKey.csproj.GenerateResource.cache
+D:\VS_Projects\Fake_SysK\FakeSysKey\obj\Release\FakeSysKey.csproj.CoreCompileInputs.cache
+D:\VS_Projects\Fake_SysK\FakeSysKey\obj\Release\FakeSysKey.exe
+D:\VS_Projects\Fake_SysK\FakeSysKey\obj\Release\FakeSysKey.pdb
