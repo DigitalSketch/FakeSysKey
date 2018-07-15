@@ -1,0 +1,20 @@
+Windows 10 build 1803 removed SysKey from the system.
+
+Video on how this works can be found here: https://youtu.be/wf4YSZxoL50
+
+TODO:
+Setup system to input remote user's actual IP, Location and ISP to make it look even more legit.
+
+Instructions:
+You can compile this code yourself.  It's here to let you know there is nothing
+that will mess with your machine.  If you can't compile, you can unzip the FakeSysKey.zip
+file in the "_compiled" folder for the latest build file.
+
+After compiling or Unzipping:
+
+	- Navigate to "c:\windows\system32\"
+	- Rename "syskey.exe" to something different like "syskey_old.exe" or "syskey.old"
+	   - You can delete the file if you want
+	- If you compiled the project yourself, rename the FakeSysKey.exe to syskey.exe
+	- Copy the files to the "c:\windows\system32\" folder
+	- Bait some scammers and hope they freak out!
