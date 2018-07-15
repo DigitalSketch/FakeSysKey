@@ -7,11 +7,11 @@ Trolly fake SysKey app for scambaiting. Allows a user to get all the way to hitt
 
 ## TODO
 
-You can compile this code yourself.  It's here to let you know there is nothing that will mess with your machine.  
-
-If you can't compile, you can unzip the FakeSysKey.zip file in the "_compiled" folder for the latest build file.
+Get the real IP address, Location and ISP of the scammer to make the program look more "legit".
 
 ## Instructions
+You can compile this code yourself.  It's here to let you know there is nothing that will mess with your machine.  
+If you can't compile, you can unzip the FakeSysKey.zip file in the "_compiled" folder for the latest build file.
 
 * Navigate to "c:\windows\system32\"
 * Rename "syskey.exe" to something different like "syskey_old.exe" or "syskey.old"
