@@ -1,6 +1,7 @@
 D:\VS_Projects\Fake_SysK\FakeSysKey\bin\Release\FakeSysKey.exe.config
 D:\VS_Projects\Fake_SysK\FakeSysKey\bin\Release\FakeSysKey.exe
 D:\VS_Projects\Fake_SysK\FakeSysKey\bin\Release\FakeSysKey.pdb
+D:\VS_Projects\Fake_SysK\FakeSysKey\obj\Release\FakeSysKey.csprojAssemblyReference.cache
 D:\VS_Projects\Fake_SysK\FakeSysKey\obj\Release\FakeSysKey.frmScammerScan.resources
 D:\VS_Projects\Fake_SysK\FakeSysKey\obj\Release\FakeSysKey.frmStart.resources
 D:\VS_Projects\Fake_SysK\FakeSysKey\obj\Release\FakeSysKey.frmStartupKey.resources

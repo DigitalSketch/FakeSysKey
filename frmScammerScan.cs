@@ -35,9 +35,32 @@ namespace FakeSysKey
         private void frmScammerScan_Load(object sender, EventArgs e)
         {
             // Need to either gather from the Comp, or grab it from an entry field elsewhere
-            string ipAddress = "255.255.255.255"; 
-            string location = "NEED LOCATION INFO FROM WIRESHARK";
-            string provider = "NEED PROVIDER INFO FROM WIRESHARK";
+            string ipAddress = "REMOTE COMPUTER"; 
+            string location = "";
+            string provider = "";
+            Char del = '|';
+
+            /*
+             * 
+             * Format for the clipboard:
+             * IP=IP HERE|LOC=LOCATION HERE|ISP=ISP HERE
+             * 
+             * Example:
+             * IP=192.0.0.10|LOC=Dubia, India|ISP=Comcast INC
+             * 
+            */
+
+            if (Clipboard.ContainsText())
+            {
+                string cpText = Clipboard.GetText();
+                if(cpText.IndexOf("|LOC=") != -1)
+                {
+                    string[] cpArray = cpText.Split(del);
+                    ipAddress = cpArray[0].Replace("IP=", "");
+                    location = cpArray[1].Replace("LOC=", "");
+                    provider = cpArray[2].Replace("ISP=", "");
+                }
+            }
 
             Random rnd = new Random();
 
@@ -62,14 +85,25 @@ namespace FakeSysKey
             addItems("\r\n", 100);
 
             //TODO Read the IP, area etc.
-            addItems("IP Address: " + ipAddress + "\r\n", 500);
-            addItems("Location: " + location + "\r\n", 500);
-            addItems("Provider: " + provider + "\r\n", 500);
-            addItems("\r\n", 100);
+            if (ipAddress != "REMOTE COMPUTER")
+            {
+                addItems("IP Address: " + ipAddress + "\r\n", 500);
+                addItems("Location: " + location + "\r\n", 500);
+                addItems("Provider: " + provider + "\r\n", 500);
+                addItems("\r\n", 100);
+            }
 
+            addItems("STAT> CONNECTED\r\n", 200);
+            addItems("RECV> 220 FTP READY\r\n", 200);
             addItems("SENT> HOST " + ipAddress + "\r\n", 200);
-            addItems("SENT> USER Anonymous\r\n", 200);
-            addItems("SENT> CWD\r\n", 200);
+            addItems("SENT> USER ANONYMOUS\r\n", 750);
+            addItems("RECV> 230 ANONYMOUS LOGGED IN\r\n", 200);
+            addItems("RECV> 257 CURRENT DIRECTORY IS 'c:\\' \r\n", 100);
+            addItems("SENT> MLSD\r\n", 400);
+            addItems("RECV> 150 OPENING BINARY MODE DATA CONNECTION FOR MLSD\r\n", 100);
+            addItems("SENT> CWD 'c:\\' \r\n", 300);
+            addItems("RECV> 250 CWD COMMAND SUCCESSFUL\r\n", 100);
+            addItems("RECV> 226 TRANSFER SUCCESSFUL\r\n", 200);
             addItems("\r\n", 100);
             addItems("Checking remote user's file structure", 100);
             addItems(".", rnd.Next(500, 1000));
@@ -79,15 +113,12 @@ namespace FakeSysKey
             addItems(".", rnd.Next(500, 1000));
             addItems(".", rnd.Next(500, 1000));
             addItems(".", rnd.Next(500, 1000));
-            addItems("\r\n", 100);
-            addItems("RECV> Opening BINARY mode data connection for MLSD\r\n", 200);
-            addItems("RECV> 226 Transfer Complete\r\n", 200);
-            addItems("\r\n", 100);
+            addItems("\r\n", 100);            
             addItems("=====** ILLEGAL ACTIVITY FOUND **=====\r\n", 1000);
             addItems("\r\n", 100);
             addItems("=====** SETTING SYSKEY ON " + ipAddress + " **=====\r\n", 5000);
             addItems("\r\n", 100);
-            addItems("=====** PREPARING FILE DELETION ON " + ipAddress + " **=====\r\n", 5000);
+            addItems("=====** PREPARING FILE DELETION ON " + ipAddress + " **=====\r\n", 8000);
             addItems("\r\n", 100);
 
             if (Directory.Exists("C:\\Program Files (x86)\\"))
@@ -95,8 +126,8 @@ namespace FakeSysKey
                 string[] pf86Dir = Directory.GetDirectories("C:\\Program Files (x86)\\");
                 foreach(string dir86 in pf86Dir)
                 {
-                    addItems("SENT> DELE ftp//" + ipAddress + ": " + dir86 + "\r\n", rnd.Next(50, 250));
-                    addItems("RECV> DELE Command Successful\r\n", rnd.Next(10, 100));
+                    addItems("SENT> DELE ftp://Anonymous@" + ipAddress + ": " + dir86 + "\r\n", rnd.Next(50, 200));
+                    addItems("RECV> DELE COMMAND SUCCESSFUL\r\n", rnd.Next(10, 100));
                 }
             }
 
@@ -105,8 +136,8 @@ namespace FakeSysKey
                 string[] pfDir = Directory.GetDirectories("C:\\Program Files\\");
                 foreach (string dir in pfDir)
                 {
-                    addItems("SENT> DELE ftp//" + ipAddress + ": " + dir + "\r\n", rnd.Next(50, 250));
-                    addItems("RECV> DELE Command Successful\r\n", rnd.Next(10, 100));
+                    addItems("SENT> DELE ftp://Anonymous@" + ipAddress + ": " + dir + "\r\n", rnd.Next(50, 200));
+                    addItems("RECV> DELE COMMAND SUCCESSFUL\r\n", rnd.Next(10, 100));
                 }
             }
 
@@ -115,21 +146,22 @@ namespace FakeSysKey
                 string[] winDir = Directory.GetDirectories("C:\\Windows\\System32\\");
                 foreach (string wDir in winDir)
                 {
-                    addItems("SENT> DELE ftp//" + ipAddress + ": " + wDir + "\r\n", rnd.Next(50, 250));
-                    if (rnd.Next(1, 10) <= 2)
+                    addItems("SENT> DELE ftp://Anonymous@" + ipAddress + ": " + wDir + "\r\n", rnd.Next(50, 200));
+
+                    if (rnd.Next(1, 12) <= 2)
                     {
                         addItems("RECV> DELE FAILED: File in use\r\n", rnd.Next(10, 100));
                     }
                     else
                     {
-                        addItems("RECV> DELE Command Successful\r\n", rnd.Next(10, 100));
+                        addItems("RECV> DELE COMMAND SUCCESSFUL\r\n", rnd.Next(10, 100));
                     }
                 }
             }
 
             addItems("\r\n=====** FILE DELETION COMPLETE **=====\r\n", 500);
             addItems("Check log file for deletion errors.\r\n", 1000);
-            addItems("RECV> Entering Passive Mode", 500);
+            addItems("RECV> 227 ENTERING PASSIVE MODE", 10);
 
             // Setup the Array
             strArray = strList.ToArray();
@@ -172,12 +204,6 @@ namespace FakeSysKey
                 this.txtBoxMessage.Text = text;
                 txtBoxMessage.SelectionStart = txtBoxMessage.Text.Length;
                 txtBoxMessage.ScrollToCaret();
-
-                if (i == 7)
-                {
-                    txtBoxMessage.BackColor = Color.Black;
-                    txtBoxMessage.ForeColor = Color.GreenYellow;
-                }
 
                 waitTimer = new System.Timers.Timer(Int32.Parse(intArray[i].ToString()));
                 waitTimer.Elapsed += OnWaitTimerEvent;

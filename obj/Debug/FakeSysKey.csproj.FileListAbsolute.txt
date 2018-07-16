@@ -9,3 +9,4 @@ D:\VS_Projects\Fake_SysK\FakeSysKey\obj\Debug\FakeSysKey.csproj.GenerateResource
 D:\VS_Projects\Fake_SysK\FakeSysKey\obj\Debug\FakeSysKey.csproj.CoreCompileInputs.cache
 D:\VS_Projects\Fake_SysK\FakeSysKey\obj\Debug\FakeSysKey.exe
 D:\VS_Projects\Fake_SysK\FakeSysKey\obj\Debug\FakeSysKey.pdb
+D:\VS_Projects\Fake_SysK\FakeSysKey\obj\Debug\FakeSysKey.csprojAssemblyReference.cache

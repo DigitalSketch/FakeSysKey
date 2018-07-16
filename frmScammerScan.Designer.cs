@@ -37,8 +37,9 @@
             // 
             // txtBoxMessage
             // 
-            this.txtBoxMessage.BackColor = System.Drawing.SystemColors.Window;
-            this.txtBoxMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxMessage.BackColor = System.Drawing.Color.Black;
+            this.txtBoxMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxMessage.ForeColor = System.Drawing.Color.GreenYellow;
             this.txtBoxMessage.Location = new System.Drawing.Point(20, 100);
             this.txtBoxMessage.Multiline = true;
             this.txtBoxMessage.Name = "txtBoxMessage";
